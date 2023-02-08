@@ -2,7 +2,6 @@
 
 # Calendy App
 
-<hr>
 
 ## For a deployed version of this app [click here!](https://mern-calendar-tau.vercel.app/)
 
@@ -12,7 +11,6 @@ If you notice a issue on this project or you want to request a new feature , ple
 
 # Running this project locally
 
-<hr>
 
 1. **Fork this repository into your own account** <br><br>
 2. **Run this command on your terminal to install the required dependencies (Make sure you are on the project folder)**
