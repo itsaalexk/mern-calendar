@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { LoginPage } from '../auth';
 import { CalendarPage } from '../calendar';
+import { ErrorPage } from '../calendar/pages/ErrorPage';
 
 
 export const AppRouter = () => {
@@ -18,6 +19,8 @@ export const AppRouter = () => {
             }
 
             <Route path="/*" element={ <Navigate to="/auth/login" /> } />
+            <Route path="*" element={ <Navigate to="/404" /> } />
+            <Route path="/404" element={<ErrorPage />}/>
             <Route path="/register" element={<LoginPage />}/>
         </Routes>
     )
