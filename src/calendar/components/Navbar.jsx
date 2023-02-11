@@ -1,6 +1,15 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { CalendarIcon } from "../../ui/svg-icons/CalendarIcon"
 
+
+
+const styles ={
+  title:{
+    fontSize:30,
+    marginLeft:10
+  }
+}
 
 export const Navbar = () => {
   const navigate= useNavigate()
@@ -9,16 +18,16 @@ export const Navbar = () => {
   const handleClick = ()=>{
     setLogin(!login)
     console.log(login)
-    navigate('/register')
+    navigate('/register-login')
     setLogin(false)
   }
 
   return (
     <div className="navbar navbar-dark bg-dark mb-4 px-4">
         <span className="navbar-brand">
-            <i className="fas fa-calendar-alt"></i>
+           {<CalendarIcon />}
             &nbsp;
-            Calendy
+            <b style={styles.title}>C</b>alendy
         </span>
 
         <button className="btn btn-outline-danger" onClick={handleClick}>

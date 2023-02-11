@@ -1,6 +1,24 @@
+import { useNavigate } from 'react-router-dom';
+import { LeftArrow } from '../../ui/svg-icons/LeftArrow';
 import './LoginPage.css';
 
+
+const styles ={
+    backButton:{
+        marginTop:10,
+        borderRadius:90,
+        color:'white'
+    }
+}
+
 export const LoginPage = () => {
+    const navigate = useNavigate()
+    const handleBack =()=>{
+        
+        navigate(-1)
+    }
+
+
     return (
         <div className="container login-container">
             <div className="row">
@@ -72,7 +90,9 @@ export const LoginPage = () => {
                         </div>
                     </form>
                 </div>
+                
             </div>
+            <button style={styles.backButton}className='btn btn-primary'onClick={handleBack}>{<LeftArrow />} Volver Atras</button>
         </div>
     )
 }
