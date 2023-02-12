@@ -24,3 +24,5 @@ yarn install
 ```
 yarn dev
 ```
+
+4. **Create a file named .env to set up the environment variables and change the values with your own, you must follow the variables name in the .env.example file**

@@ -17,7 +17,6 @@ export const Navbar = () => {
 
   const handleClick = ()=>{
     setLogin(!login)
-    console.log(login)
     navigate('/register-login')
     setLogin(false)
   }
