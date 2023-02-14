@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onAddNewEvent, onDeleteEvent, onSetActiveEvent, onUpdateEvent } from '../store';
+import { calendarApi } from '../api';
+import { convertEvents } from '../helpers/convertEvents';
+import { onAddNewEvent, onDeleteEvent, onLoadEvents, onSetActiveEvent, onUpdateEvent } from '../store';
 
 
 export const useCalendarStore = () => {
   
     const dispatch = useDispatch();
     const { events, activeEvent } = useSelector( state => state.calendar );
+    const {user} = useSelector(state => state.auth)
 
     const setActiveEvent = ( calendarEvent ) => {
         dispatch( onSetActiveEvent( calendarEvent ) )
@@ -20,9 +23,12 @@ export const useCalendarStore = () => {
             dispatch( onUpdateEvent({ ...calendarEvent }) );
         } else {
             // Creando
-            dispatch( onAddNewEvent({ ...calendarEvent, _id: new Date().getTime() }) );
+            const {data} = await calendarApi.post('/events/',calendarEvent)
+            console.log({data})
+            dispatch( onAddNewEvent({ ...calendarEvent, id: data.evento.id, user}) );
         }
     }
+    
 
     const startDeletingEvent = () => {
         // Todo: Llegar al backend
@@ -30,6 +36,20 @@ export const useCalendarStore = () => {
 
         dispatch( onDeleteEvent() );
     }
+
+    const startLoadingEvents =async()=>{
+        try {
+            const {data} = await calendarApi.get('/events')
+            const events = convertEvents(data.events)
+            //dispatch(onLoadEvents(events))
+            
+            
+        }
+        catch(e){
+            console.log('Error cargando los elementos',e)
+        }
+    }
+   
 
 
     return {
@@ -42,5 +62,6 @@ export const useCalendarStore = () => {
         startDeletingEvent,
         setActiveEvent,
         startSavingEvent,
+        startLoadingEvents
     }
 }
