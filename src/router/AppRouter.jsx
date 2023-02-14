@@ -7,7 +7,7 @@ import { ErrorPage } from '../calendar/pages/ErrorPage';
 
 export const AppRouter = () => {
 
-    const authStatus = 'authenticated'; // 'authenticated'; // 'not-authenticated';
+    const authStatus = 'not-authenticated'; // 'authenticated'; // 'not-authenticated';
 
 
     return (
@@ -18,9 +18,9 @@ export const AppRouter = () => {
                     : <Route path="/" element={ <CalendarPage /> } />
             }
 
-            {/*<Route path="/*" element={ <Navigate to={<ErrorPage />} /> } />*/}
-            <Route path="/*" element={ <ErrorPage /> } />
-            <Route path="/register-login" element={<LoginPage />}/>
+            <Route path="/*" element={ <Navigate to='/auth/login' />} /> 
+            
+            
         </Routes>
     )
 }
