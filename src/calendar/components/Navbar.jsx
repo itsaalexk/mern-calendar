@@ -1,37 +1,25 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { CalendarIcon } from "../../ui/svg-icons/CalendarIcon"
+import { useAuthStore } from "../../hooks/useAuthStore"
 
-
-
-const styles ={
-  title:{
-    fontSize:30,
-    marginLeft:10
-  }
-}
 
 export const Navbar = () => {
-  const navigate= useNavigate()
-  const [login , setLogin] = useState(false)
 
-  const handleClick = ()=>{
-    setLogin(!login)
-    navigate('/register-login')
-    setLogin(false)
-  }
+  const { startLogout, user } = useAuthStore();
 
   return (
     <div className="navbar navbar-dark bg-dark mb-4 px-4">
         <span className="navbar-brand">
-           {<CalendarIcon />}
+            <i className="fas fa-calendar-alt"></i>
             &nbsp;
-            <b style={styles.title}>C</b>alendy
+            { user.name }
         </span>
 
-        <button className="btn btn-outline-danger" onClick={handleClick}>
+        <button 
+          className="btn btn-outline-danger"
+          onClick={ startLogout }
+        >
             <i className="fas fa-sign-out-alt"></i>
-            <span>{login ? 'Salir' :' Iniciar Sesion'}</span>
+            &nbsp;
+            <span>Salir</span>
         </button>
     </div>
   )
