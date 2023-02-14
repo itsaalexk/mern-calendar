@@ -5,7 +5,7 @@ export const ErrorPage = () => {
   const navigate = useNavigate()
 
   const redirectPage =()=>{
-    navigate(-1)
+    navigate('/')
   }
   return (
     <div className="d-flex align-items-center justify-content-center vh-100">
