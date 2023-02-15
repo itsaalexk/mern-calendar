@@ -2,12 +2,12 @@ import axios from 'axios';
 import { getEnvVariables } from '../helpers';
 
 const { VITE_API_URL } = getEnvVariables()
-
+console.log(VITE_API_URL )
 
 
 
 const calendarApi = axios.create({
-    baseURL: "http://localhost:8000/api"
+    baseURL: 'https://backend-mern-calendar-production-fa1d.up.railway.app/api'
 });
 
 // Todo: configurar interceptores
