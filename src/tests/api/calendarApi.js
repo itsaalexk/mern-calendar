@@ -7,7 +7,7 @@ const { VITE_API_URL } = getEnvVariables()
 
 
 const calendarApi = axios.create({
-    baseURL: "http://localhost:8000/api"
+    baseURL: VITE_API_URL
 });
 
 // Todo: configurar interceptores
