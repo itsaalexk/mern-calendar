@@ -18,7 +18,7 @@ export const CalendarPage = () => {
       opacity: 0.8,
       color: "white",
     };
-
+    console.log("hola");
     return {
       style,
     };
