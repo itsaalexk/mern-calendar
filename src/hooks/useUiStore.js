@@ -1,39 +1,34 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { onCloseDateModal, onOpenDateModal } from '../store';
-
+import { useDispatch, useSelector } from "react-redux";
+import { onCloseDateModal, onOpenDateModal, onSetModalColor } from "../store";
 
 export const useUiStore = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const { isDateModalOpen, color } = useSelector((state) => state.ui);
+  const openDateModal = () => {
+    dispatch(onOpenDateModal());
+  };
 
-    const { 
-        isDateModalOpen
-    } = useSelector( state => state.ui );
+  const closeDateModal = () => {
+    dispatch(onCloseDateModal());
+  };
 
-    const openDateModal = () => {
-        dispatch( onOpenDateModal() )
-    }
+  const toggleDateModal = () => {
+    isDateModalOpen ? openDateModal() : closeDateModal();
+  };
+  const setModalColor = (payload) => {
+    dispatch(onSetModalColor(payload));
+  };
 
-    const closeDateModal = () => {
-        dispatch( onCloseDateModal() )
-    }
+  return {
+    //* Propiedades
+    isDateModalOpen,
+    color,
 
-    const toggleDateModal = () => {
-        (isDateModalOpen)
-            ? openDateModal()
-            : closeDateModal();
-    }
-
-
-
-    return {
-        //* Propiedades
-        isDateModalOpen,
-
-        //* Métodos
-        closeDateModal,
-        openDateModal,
-        toggleDateModal,
-    }
-
-}
+    //* Métodos
+    closeDateModal,
+    openDateModal,
+    toggleDateModal,
+    setModalColor,
+  };
+};
