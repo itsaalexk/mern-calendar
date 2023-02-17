@@ -5,8 +5,17 @@ export const FabDelete = () => {
   const { startDeletingEvent, hasEventSelected } = useCalendarStore();
 
   const handleDelete = async () => {
-    await Swal.fire("Estas seguro de que quieres eliminar este evento?");
-    startDeletingEvent();
+    await Swal.fire({
+      title: "Estas seguro de querer eliminar el evento?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        startDeletingEvent();
+      }
+    });
   };
 
   return (
