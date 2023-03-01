@@ -3,7 +3,7 @@
 # Calendy App
 
 
-## For a deployed version of this app [click here!](https://mern-calendar-tau.vercel.app/)
+## For a deployed version of this app [click here!](https://mern-calendar-tau.vercel.app/) (Please register first)
 
 
 ## Contribution/ Feature Request
