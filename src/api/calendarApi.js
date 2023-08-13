@@ -1,6 +1,6 @@
 import axios from "axios";
 const calendarApi = axios.create({
-  baseURL: "https://backend-mern-calendar-production-fa1d.up.railway.app/api",
+  baseURL: "https://mern-backend-qnsv.onrender.com/api",
 });
 
 // Todo: configurar interceptores
